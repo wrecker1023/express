@@ -105,6 +105,21 @@ app.get('/', (req,res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
 });
 
+// http://localhost:3001/animals
+app.get('/animals', (req,res) => {
+    res.sendFile(path.join(__dirname, './public/animals.html'));
+});
+
+// http://localhost:3001/zookeepers
+app.get('/zookeepers', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/zookeepers.html'));
+});
+
+//default unspecified route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
 // set up a route on our server that
 // accepts data to be used or stored server-side
 app.post('/api/animals', (req, res) => {

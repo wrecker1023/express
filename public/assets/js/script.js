@@ -41,7 +41,7 @@ const handleAnimalFormSubmit = event => {
     alert('Error: ' + response.statusText);
   })
   .then(postResponse);
-  alert('Thank you fir adding an animal!');
+  alert('Thank you for adding an animal!');
 };
 
 $animalForm.addEventListener('submit', handleAnimalFormSubmit);
