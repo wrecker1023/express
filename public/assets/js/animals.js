@@ -76,3 +76,5 @@ const handleGetAnimalsSubmit = event => {
 $animalForm.addEventListener('submit', handleGetAnimalsSubmit);
 
 getAnimals();
+
+// http://localhost:3001/
