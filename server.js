@@ -10,6 +10,8 @@ const path = require('path');
 app.use(express.urlencoded({ extended: true }));
 //parse incoming json data
 app.use(express.json());
+//add middleware to load css and js files with html
+app.use(express.static('public'));
 
 function filterByQuery( query, animalsArray) {
     let personalityTraitsArray = [];
@@ -98,6 +100,26 @@ app.get('/api/animals/:id', (req, res) => {
     }
 });
 
+//create homepage
+app.get('/', (req,res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+// http://localhost:3001/animals
+app.get('/animals', (req,res) => {
+    res.sendFile(path.join(__dirname, './public/animals.html'));
+});
+
+// http://localhost:3001/zookeepers
+app.get('/zookeepers', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/zookeepers.html'));
+});
+
+//default unspecified route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
 // set up a route on our server that
 // accepts data to be used or stored server-side
 app.post('/api/animals', (req, res) => {
@@ -118,4 +140,3 @@ app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}`);
 });
 
-//added ability to post new animal and added middleware
