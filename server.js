@@ -1,9 +1,6 @@
 const express = require('express');
-const {animals} = require('./data/animals')
 const PORT = process.env.PORT || 3001;
 const app = express();
-const fs = require('fs');
-const path = require('path');
 
 //after moding code for app request
 const apiRoutes = require('./routes/apiRoutes');
